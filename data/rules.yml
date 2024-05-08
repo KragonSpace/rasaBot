@@ -1,18 +1,17 @@
 version: "3.1"
 
 rules:
+# - rule: Ask for name at the beginning of chat
+#   steps:
+  # - intent: greet  # This can be an intent like `greet` or a generic start intent
+  # - action: utter_ask_name
 
-- rule: Say goodbye anytime the user says goodbye
+- rule: Protective Session Start
   steps:
-  - intent: goodbye
-  - action: utter_goodbye
+  - action: action_session_start
+  # - action: action_ask_name
+  - action: action_greet_fullname
 
-- rule: Say 'I am a bot' anytime the user challenges
-  steps:
-  - intent: bot_challenge
-  - action: utter_iamabot
-
-- rule: Say 'I am a bot' anytime the user challenges
-  steps:
-  - intent: healthcare_bot
-  - action: utter_healthcare_bot
+# - rule: ask company name
+#   steps:
+#   - action: action_set_company_name

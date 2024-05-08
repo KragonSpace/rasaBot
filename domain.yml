@@ -2,36 +2,87 @@ version: "3.1"
 
 intents:
   - greet
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
-  - healthcare_bot
+  - provide_first_name
+  - provide_last_name
+  - provide_company_name
+  - provide_company_role
+  - provide_email
 
+entities:
+  - first_name
+  - last_name
+  - company_name
+  - company_role
+  - PERSON
+  - email
+
+slots:
+  first_name:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: PERSON
+  awaiting_name:
+    type: bool
+    influence_conversation: true
+    mappings:
+    - type: custom
+  last_name:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: PERSON
+  company_name:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: company_name
+  company_role:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: company_role
+  email:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: email
 responses:
-  utter_greet:
-  - text: "Hey! How are you?"
+  utter_ask_first_name:
+    - text: "Hello, What's your first name?"
 
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
+  utter_ask_last_name:
+    - text: "Hello, {first_name}! \nI'm going to ask you a few questions quickly and then in 20 minutes or so I'm going to show you something cool. What's your Last Name?"
 
-  utter_did_that_help:
-  - text: "Did that help you?"
+  # utter_ask_company_name:
+  #   - text: "What is the name of your company?"
 
-  utter_happy:
-  - text: "Great, carry on!"
+  utter_ask_company_role:
+    - text: "What is your role?"
+  
 
-  utter_goodbye:
-  - text: "Bye"
+  # utter_company_name:
+  #   - text: "What do you do at {company_name}?"
 
-  utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+  # utter_company_role:
+  #   - text: "Awesome, let me work my magic and I will be back with you soon. Enjoy the rest of the presentation."
 
-  utter_healthcare_bot:
-  - text: "Healthcare 0.1"
+actions:
+  # - action_ask_first_name
+  - action_ask_last_name
+  - action_greet_fullname
+  - action_set_company_name
+  - action_acknowledge_company_name
+  - action_set_company_role
+  - action_acknowledge_company_role
+  - action_capture_email
+  - action_email_confirmation
+  # - action_company_role
+  # - action_generate_gpt_response
 
 session_config:
   session_expiration_time: 60

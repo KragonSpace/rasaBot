@@ -1,35 +1,46 @@
 version: "3.1"
 
 stories:
+  - story: ask user first name and last name
+    steps:
+      - intent: greet
+      - action: utter_ask_first_name
+      # - action: action_ask_first_name
 
-- story: happy path
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
-
-- story: sad path 1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
-
-- story: sad path 2
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_goodbye
-
-- story: path 4
-  steps:
-  - intent: healthcare_bot
-  - action: utter_healthcare_bot
+      - intent: provide_first_name
+        entities:
+          - first_name: "Ben"
+      - action: action_ask_last_name
+      # - action: utter_greet
+  - story: ask last name
+    steps:
+      - intent: provide_last_name
+        entities:
+          - last_name: "Smith"
+      - action: action_greet_fullname
+      # - action: utter_ask_company_name
+  - story: Get unknown company name
+    steps:
+      - intent: provide_company_name
+        entities:
+          - company_name: "IBM"
+      - action: action_set_company_name
+      - action: action_acknowledge_company_name
+      # - action: utter_ask_company_role
+  - story: Ask company role
+    steps:
+      - intent: provide_company_role
+        entities:
+            - company_role: "CEO"
+      - action: action_set_company_role
+      - action: action_acknowledge_company_role
+  - story: Ask email
+    steps:
+      - intent: provide_email
+      - action: action_email_confirmation
+      # - action: action_capture_email
+      - slot_was_set:
+        - email: "email@example.com"
+      # - action: action_generate_gpt_response
+  # - story: Capture Email
+  #   steps:

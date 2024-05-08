@@ -1,97 +1,43 @@
 version: "3.1"
 
 nlu:
+
 - intent: greet
   examples: |
-    - hey
-    - hello
     - hi
-    - hello there
-    - good morning
-    - good evening
-    - moin
-    - hey there
-    - let's go
-    - hey dude
-    - goodmorning
-    - goodevening
-    - good afternoon
+    - hello
+    - hey
 
-- intent: goodbye
+- intent: provide_first_name
   examples: |
-    - cu
-    - good by
-    - cee you later
-    - good night
-    - bye
-    - goodbye
-    - have a nice day
-    - see you around
-    - bye bye
-    - see you later
+    - [Ben](first_name)
+    - [May](first_name)
+    - I am [John](first_name)
+    - I'm [Alice](first_name)
+    - Call me [Bob](first_name)
 
-- intent: affirm
+- intent: provide_last_name
   examples: |
-    - yes
-    - y
-    - indeed
-    - of course
-    - that sounds good
-    - correct
+    - My last name is [Johnson](last_name)
+    - It is [Williams](last_name)
+    - [Smith](last_name)
+    - [Bressington](last_name)
 
-- intent: deny
+- intent: provide_company_name
   examples: |
-    - no
-    - n
-    - never
-    - I don't think so
-    - don't like that
-    - no way
-    - not really
+    - My company name is [ABC Inc.](company_name)
+    - Our company is called [XYZ Ltd.](company_name)
+    - [Automate Boring](company_name)
 
-- intent: mood_great
+- intent: provide_company_role
   examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
+    - I am a [CEO](company_role)
+    - My role is [a engineer](company_role)
+    - [PM](company_role)
 
-- intent: mood_unhappy
+- intent: provide_email
   examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
-
-- intent: bot_challenge
-  examples: |
-    - are you a bot?
-    - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?
-
-- intent: healthcare_bot
-  examples: |
-    - what is your name?
-    - what are you called?
-    - how can I address you?
+    - [ben@automateboring.net](email)
+    - My email is [email@example.com](email)
+    - You can reach me at [email@example.com](email)
+    - Here's my email: [email@example.com](email)

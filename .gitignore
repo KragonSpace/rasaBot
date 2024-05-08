@@ -1,2 +1,7 @@
 venv/*
 *.tar.gz
+.rasa/*
+actions/__pycache__
+cache/*
+*.pyc
+*.db
